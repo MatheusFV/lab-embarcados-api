@@ -28,7 +28,7 @@
         "helmet": "3.9.0",
         "http-errors": "^1.6.3",
         "lodash": "4.17.4",
-        "ts-node": "^6.0.3"
+        "ts-node": "^6.2.0"
     },
     "devDependencies": {
         "@types/body-parser": "1.16.8",

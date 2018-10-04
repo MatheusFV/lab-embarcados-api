@@ -8,6 +8,6 @@ export default class Routes {
         server.app.use('/', router);
 
         // users
-        server.app.use('/v1/message', new MessageRouter().router);
+        server.app.use('/message', new MessageRouter().router);
     }
 }
