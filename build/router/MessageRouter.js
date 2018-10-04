@@ -11,7 +11,8 @@ var MessageRouter = /** @class */ (function () {
         this.routes();
     }
     MessageRouter.prototype.routes = function () {
-        this.router.post('/', MessageController_1.default.receiveMessage);
+        this.router.post('/', MessageController_1.default.sendMessage);
+        this.router.get('/ports', MessageController_1.default.requestOpenPorts);
     };
     return MessageRouter;
 }());

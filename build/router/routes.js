@@ -9,7 +9,7 @@ var Routes = /** @class */ (function () {
         var router = express.Router();
         server.app.use('/', router);
         // users
-        server.app.use('/v1/message', new MessageRouter_1.default().router);
+        server.app.use('/message', new MessageRouter_1.default().router);
     };
     return Routes;
 }());

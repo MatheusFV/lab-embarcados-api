@@ -24,6 +24,7 @@ var Middleware = /** @class */ (function () {
                 ' Authorization,' +
                 ' Access-Control-Allow-Credentials');
             res.header('Access-Control-Allow-Credentials', 'true');
+            console.log(req.method + ' ' + req.url);
             next();
         });
     };
