@@ -5,7 +5,7 @@ import * as serverHandlers from './serverHandlers';
 
 debug('ts-express:server');
 
-const port : number | string | boolean = serverHandlers.normalizePort(process.env.PORT || 8080);
+const port : number | string | boolean = serverHandlers.normalizePort(process.env.PORT || 3000);
 
 Server.set('port', port);
 console.log(`Server listening on port ${port}`);
