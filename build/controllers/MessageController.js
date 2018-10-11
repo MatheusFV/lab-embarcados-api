@@ -1,12 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var fs = require("fs");
 var MessageController = /** @class */ (function () {
     function MessageController() {
     }
     MessageController.prototype.sendMessage = function (req, res, next) {
-        console.log(req.body);
-        // if (!req.body.message) { res.status(400).json({ error: 'Field message is empty' }); }
-        // if (!req.body.body) { res.status(400).json({ error: 'Field message is empty' }); }
+        if (req.body.message == undefined) {
+            res.status(400).json({ error: 'Field message is empty' });
+        }
+        if (!req.body.body == undefined) {
+            res.status(400).json({ error: 'Field message is empty' });
+        }
         // Send message
         res.status(200).json({
             message: 'Messa sent',
@@ -17,7 +21,20 @@ var MessageController = /** @class */ (function () {
         });
     };
     MessageController.prototype.requestOpenPorts = function (req, res, next) {
-        res.status(200).json({ ports: [100, 200, 300, 400, 500] });
+        fs.readFile('ports.txt', function (err, value) {
+            console.log(value);
+            res.status(200).json(JSON.parse(value));
+        });
+    };
+    MessageController.prototype.saveOpenPorts = function (req, res, next) {
+        fs.writeFile('ports.txt', JSON.stringify({ ports: [100, 200, 300, 400, 500] }), function (err) {
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log('sucesso');
+            }
+        });
     };
     return MessageController;
 }());

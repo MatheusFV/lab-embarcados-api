@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as fs from 'fs';
 
 class MessageController {
     public sendMessage(req: express.Request, res: express.Response, next: express.NextFunction): void {
@@ -15,7 +16,20 @@ class MessageController {
     }
 
     public requestOpenPorts(req: express.Request, res: express.Response, next: express.NextFunction): void {
-        res.status(200).json({ ports: [100, 200, 300, 400, 500] });
+        fs.readFile('ports.txt', (err: any, value: any) => {
+            console.log(value)
+            res.status(200).json(JSON.parse(value));
+        });
+    }
+
+    public saveOpenPorts(req: express.Request, res: express.Response, next: express.NextFunction): void {
+        fs.writeFile('ports.txt', JSON.stringify({ ports: [100, 200, 300, 400, 500] }) , (err) => {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('sucesso');
+            }
+        });
     }
 }
 

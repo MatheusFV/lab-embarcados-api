@@ -13,6 +13,7 @@ var MessageRouter = /** @class */ (function () {
     MessageRouter.prototype.routes = function () {
         this.router.post('/', MessageController_1.default.sendMessage);
         this.router.get('/ports', MessageController_1.default.requestOpenPorts);
+        this.router.get('/savePorts', MessageController_1.default.saveOpenPorts);
     };
     return MessageRouter;
 }());
