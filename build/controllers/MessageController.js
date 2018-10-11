@@ -4,12 +4,9 @@ var MessageController = /** @class */ (function () {
     function MessageController() {
     }
     MessageController.prototype.sendMessage = function (req, res, next) {
-        if (!req.body.message) {
-            res.status(400).json({ error: 'Field message is empty' });
-        }
-        if (!req.body.body) {
-            res.status(400).json({ error: 'Field message is empty' });
-        }
+        console.log(req.body);
+        // if (!req.body.message) { res.status(400).json({ error: 'Field message is empty' }); }
+        // if (!req.body.body) { res.status(400).json({ error: 'Field message is empty' }); }
         // Send message
         res.status(200).json({
             message: 'Messa sent',

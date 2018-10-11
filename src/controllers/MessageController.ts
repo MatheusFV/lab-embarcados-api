@@ -2,8 +2,8 @@ import * as express from 'express';
 
 class MessageController {
     public sendMessage(req: express.Request, res: express.Response, next: express.NextFunction): void {
-        if (!req.body.message) { res.status(400).json({ error: 'Field message is empty' }); }
-        if (!req.body.body) { res.status(400).json({ error: 'Field message is empty' }); }
+        if (req.body.message == undefined) { res.status(400).json({ error: 'Field message is empty' }); }
+        if (!req.body.body == undefined) { res.status(400).json({ error: 'Field message is empty' }); }
         // Send message
         res.status(200).json({
             message: 'Messa sent',
