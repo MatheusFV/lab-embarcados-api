@@ -4,14 +4,27 @@ import * as fs from 'fs';
 class MessageController {
     public sendMessage(req: express.Request, res: express.Response, next: express.NextFunction): void {
         if (req.body.message == undefined) { res.status(400).json({ error: 'Field message is empty' }); }
-        if (!req.body.body == undefined) { res.status(400).json({ error: 'Field message is empty' }); }
+        if (!req.body.port == undefined) { res.status(400).json({ error: 'Field message is empty' }); }
         // Send message
-        res.status(200).json({
-            message: 'Message sent',
-            data: {
-                message: req.body.message,
-                port: req.body.port
-            }
+        fs.readFile('messages.txt', (err: any, value: any) => {
+            const json: object = JSON.parse(value);
+
+            json[req.body.port] = req.body.message;
+            fs.writeFile('messages.txt', JSON.stringify(json) , (err) => {
+                if (err) {
+                    res.status(400).json({
+                        error: 'Unable to send the message'
+                    });
+                } else {
+                    res.status(200).json({
+                        message: 'Message sent',
+                        data: {
+                            message: req.body.message,
+                            port: req.body.port
+                        }
+                    });
+                }
+            });
         });
     }
 
@@ -33,26 +46,13 @@ class MessageController {
     }
 
     public getMessages(req: express.Request, res: express.Response, next: express.NextFunction): void {
-        res.status(200).json({
-            message: 'Messages',
-            data: [
-                {
-                    message: 'Oi dibua 1',
-                    port: 1000
-                },
-                {
-                    message: 'Oi dibua 2',
-                    port: 1001
-                },
-                {
-                    message: 'Oi dibua 3',
-                    port: 1002
-                },
-                {
-                    message: 'Oi dibua 4',
-                    port: 1003
-                },
-            ]
+        fs.readFile('messages.txt', (err: any, value: any) => {
+            const json: object = JSON.parse(value);
+
+            res.status(200).json({
+                message: 'Messages found',
+                data: json
+            });
         });
     }
 }
