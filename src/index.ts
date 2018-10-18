@@ -19,9 +19,15 @@ const net: any = require('net');
 const serverSocket: any = net.createServer((socket) => {
     socket.write('Echo server\r\n');
     socket.pipe(socket);
+    console.log(socket.remoteAddress);
+    console.log(socket.remotePort);
+
+    socket.on('data', (data) => {
+        console.log('Received: ' + data);
+    });
 });
 
-serverSocket.listen(1337, '127.0.0.1');
+serverSocket.listen(1337);
 
 server.on('error', error => serverHandlers.onError(error, port));
 server.on('listening', serverHandlers.onListening.bind(server));
