@@ -15,5 +15,6 @@ export default class MessageRouter {
         this.router.post('/', MessageController.sendMessage);
         this.router.get('/ports', MessageController.requestOpenPorts);
         this.router.get('/savePorts', MessageController.saveOpenPorts);
+        this.router.get('/getMessages', MessageController.getMessages);
     }
 }
