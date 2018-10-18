@@ -30,6 +30,7 @@
     "helmet": "3.9.0",
     "http-errors": "^1.6.3",
     "lodash": "4.17.4",
+    "socket.io": "^2.1.1",
     "ts-node": "^6.2.0",
     "typescript": "2.6.2"
   },
