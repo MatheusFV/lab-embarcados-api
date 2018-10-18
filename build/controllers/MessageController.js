@@ -13,7 +13,7 @@ var MessageController = /** @class */ (function () {
         }
         // Send message
         res.status(200).json({
-            message: 'Messa sent',
+            message: 'Message sent',
             data: {
                 message: req.body.message,
                 port: req.body.port
@@ -34,6 +34,29 @@ var MessageController = /** @class */ (function () {
             else {
                 console.log('sucesso');
             }
+        });
+    };
+    MessageController.prototype.getMessages = function (req, res, next) {
+        res.status(200).json({
+            message: 'Messages',
+            data: [
+                {
+                    message: 'Oi dibua 1',
+                    port: 1000
+                },
+                {
+                    message: 'Oi dibua 2',
+                    port: 1001
+                },
+                {
+                    message: 'Oi dibua 3',
+                    port: 1002
+                },
+                {
+                    message: 'Oi dibua 4',
+                    port: 1003
+                },
+            ]
         });
     };
     return MessageController;
