@@ -37,11 +37,7 @@ class MessageController {
 
     public saveOpenPorts(req: express.Request, res: express.Response, next: express.NextFunction): void {
         fs.writeFile('ports.txt', JSON.stringify({ ports: req.body.devices }) , (err) => {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log('sucesso');
-            }
+            return res.status(200).json({ err });
         });
     }
 

@@ -41,12 +41,7 @@ var MessageController = /** @class */ (function () {
     };
     MessageController.prototype.saveOpenPorts = function (req, res, next) {
         fs.writeFile('ports.txt', JSON.stringify({ ports: req.body.devices }), function (err) {
-            if (err) {
-                console.log(err);
-            }
-            else {
-                console.log('sucesso');
-            }
+            return res.status(200).json({ err: err });
         });
     };
     MessageController.prototype.getMessages = function (req, res, next) {
