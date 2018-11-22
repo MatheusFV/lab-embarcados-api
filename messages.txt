@@ -1,1 +1,1 @@
-{"1000":"Olá dibua","1001":"Olá dibua 1","1002":"Olá dibua 2"}
+{"1000":"Olá dibua","1001":"Olá dibua 1","1002":"Olá dibua 2, novamente"}
